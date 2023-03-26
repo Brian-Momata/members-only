@@ -1,5 +1,5 @@
 <h1>Create a new post</h1>
-<%= form_with model: @posts do |f|%>
+<%= form_for @post do |f|%>
   <%= f.text_area :body, size: '60x30' %>
   <%= f.submit 'Submit Post'%>
 <% end %>
