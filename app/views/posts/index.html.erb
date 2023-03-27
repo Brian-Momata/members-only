@@ -6,7 +6,9 @@
   <% @posts.each do |post| %>
     <% author = User.find(post.user_id) %>
     <li>
-    <%= author.username unless !user_signed_in?%><br>
+    <% if user_signed_in? %>
+      @<%= author.username %><br>
+    <% end %>
     <%= post.body %>
     </li><br><br>
   <% end %>
@@ -16,7 +18,7 @@
 <%= link_to 'create new post', new_post_path %><br>
 
 <% if user_signed_in?%>
-  <div>Your signed-in as <%= current_user.username %><br></div>
+  <div>Your signed-in as @<%= current_user.username %><br></div>
   <%= link_to 'sign out', destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
 <% else %>
   <%= link_to 'sign in', new_user_session_path %>
