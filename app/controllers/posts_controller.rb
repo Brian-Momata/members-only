@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
+  def index
+    @posts = Post.all
+    render :index
+  end
+  
   def new
     @post = Post.new
   end
@@ -26,11 +31,6 @@ class PostsController < ApplicationController
   end
 
   def show
-  end
-
-  def index
-    @posts = Post.all
-    render :index
   end
 
   private
